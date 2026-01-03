@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Large data & models
+data/raw/
+training/model/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large datasets
+data/*.csv
+data/raw/
