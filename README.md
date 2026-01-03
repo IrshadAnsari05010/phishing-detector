@@ -1,132 +1,152 @@
-## ⚡ Quick Start (Recommended)
+# AI-Based Phishing Detection System 🔐
 
-1. Install dependencies:
-pip install -r requirements.txt
-2. Start the API:
-python api/app.py
-3. Test the API:
-curl -X POST http://127.0.0.1:5000/predict \
--H "Content-Type: application/json" \
--d '{"text":"URGENT: Verify your bank account immediately"}'
-You will receive a phishing or safe prediction instantly.
+An AI-powered cybersecurity project designed to detect phishing attacks using Natural Language Processing (NLP) and a Transformer-based deep learning model. This system classifies suspicious text (emails or messages) as **Phishing** or **Legitimate**, helping mitigate social-engineering threats.
 
-## 🧩 How It Works (Simple Explanation)
+---
 
-1. User sends email text to the API.
-2. The system analyzes the text using a transformer-based NLP model.
-3. The model outputs probabilities for phishing and safe.
-4. If the model is uncertain, rule-based checks are applied.
-5. A final prediction is returned.
+## 📌 Problem Statement
 
+Phishing is one of the most common cybersecurity threats, where attackers use deceptive messages to trick users into revealing sensitive information. Traditional rule-based detection systems often fail to detect sophisticated phishing attacks that mimic legitimate communication.
 
+---
 
-AI-Based Phishing Detection System
+## 💡 Solution Overview
 
-A real-world phishing email detection system built using DistilBERT, trained on 80,000+ real emails, and deployed as a Flask REST API.
+This project implements an **AI-driven phishing detection system** using a fine-tuned **DistilBERT** model. The system analyzes textual content and predicts whether it is phishing or legitimate, along with a confidence score. A web-based interface allows users to test messages in real time.
 
-This project demonstrates end-to-end applied machine learning engineering, including data preparation, transformer-based modeling, GPU-accelerated training, inference stability handling, and production-style API deployment.
+---
 
+## 🏗️ System Architecture
 
-FEATURES
+User (Web UI)
+↓
+React Frontend (Vite + Tailwind)
+↓
+Flask REST API
+↓
+DistilBERT NLP Model
+↓
+Prediction Result (Label + Confidence)
 
-- Transformer-based phishing detection using DistilBERT
-- Trained on 80,000+ real phishing and legitimate emails
-- GPU-accelerated training (NVIDIA RTX 3050)
-- Robust inference with NaN-safe handling
-- Hybrid ML + rule-based fallback for reliability
-- Flask REST API for real-time predictions
+yaml
+Copy code
 
+---
 
-ARCHITECTURE
+## 🔐 Cybersecurity Focus
 
-Client (curl / browser / extension)
-        |
-        v
-Flask API (/predict)
-        |
-        v
-DistilBERT Model (PyTorch)
-        |
-        v
-Prediction (phishing / safe)
+- Detects **social engineering and phishing attacks**
+- Uses **AI/NLP** for intelligent threat detection
+- Implements **secure API communication**
+- Designed following **secure software development practices**
 
-Explanation:
-- A client sends email text to the Flask API.
-- The API processes the text using a DistilBERT model.
-- The model outputs class probabilities.
-- A hybrid decision layer returns a final phishing or safe prediction.
+---
 
+## 🧠 Machine Learning Model
 
-API USAGE
+- **Model:** DistilBERT (fine-tuned)
+- **Type:** Transformer-based NLP classification model
+- **Framework:** PyTorch
+- **Task:** Binary classification (Phishing / Legitimate)
+- **Output:** Prediction label with confidence score
 
-Endpoint:
-POST /predict
+---
 
-Request:
-{
-  "text": "URGENT: Verify your bank account immediately"
-}
+## 🌐 Web Application
 
-Response:
-{
-  "prediction": "phishing",
-  "phishing_probability": 0.5,
-  "safe_probability": 0.5
-}
+- **Frontend:** React (Builder.io), Vite, Tailwind CSS
+- **Backend:** Flask REST API
+- **Features:**
+  - Text input for analysis
+  - Real-time phishing prediction
+  - Confidence score display
 
-Note:
-When model confidence is uncertain, a rule-based fallback is applied to improve prediction reliability.
+---
 
+## 🛠️ Tech Stack
 
-ENGINEERING NOTE
+**Cybersecurity & AI:**
+- Phishing Detection
+- NLP (Natural Language Processing)
+- Transformer Models (DistilBERT)
 
-During development, the trained model experienced numerical instability (NaN values) during inference due to interrupted FP16 GPU training.
-
-Instead of retraining the model, the system was stabilized using:
-- NaN-safe inference via tensor sanitization
-- Hybrid ML + rule-based fallback logic
-
-This mirrors real-world production systems where maintaining availability and stability is critical, even under imperfect model conditions.
-
-
-TECH STACK
-
+**Backend:**
 - Python
-- PyTorch
-- HuggingFace Transformers
 - Flask
-- Natural Language Processing (NLP)
-- CUDA (GPU training)
+- REST APIs
 
+**Frontend:**
+- React
+- Vite
+- Tailwind CSS
 
-HOW TO RUN
+**Tools & Platforms:**
+- Git
+- GitHub
 
-1. Clone the repository
-2. Install required dependencies
-3. Start the API server:
-   python api/app.py
+---
 
-4. Send a test request:
-   curl -X POST http://127.0.0.1:5000/predict \
-   -H "Content-Type: application/json" \
-   -d '{"text":"Verify your account now"}'
+## 🚀 How to Run the Project Locally
 
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/IrshadAnsari05010/phishing-detector.git
+cd phishing-detector
+2️⃣ Run Backend (Flask API)
+bash
+Copy code
+cd backend/api
+pip install -r ../requirements.txt
+python app.py
+Backend will start at:
 
-PROJECT STATUS
+arduino
+Copy code
+http://localhost:8000
+3️⃣ Run Frontend (React App)
+bash
+Copy code
+cd frontend
+npm install
+npm run dev
+Frontend will start at:
 
-Complete
+arduino
+Copy code
+http://localhost:8080
+🧪 Testing
+API tested using browser, curl, and Postman
 
-The system is stable, deployable, and suitable for demonstrations, portfolios, and further extension.
+Frontend-backend communication verified via browser network inspection
 
-## 🔮 Future Improvements
+Model predictions tested using real phishing samples
 
-- Retrain model with improved numerical stability
-- Incorporate email header and URL features
-- Deploy API to cloud infrastructure
-- Integrate browser extension for real-time detection
+⚠️ Dataset Notice
+Due to GitHub file size limitations, datasets are not included in this repository.
 
+Public datasets used for training and testing include:
 
+Enron Spam Dataset
 
-AUTHOR
+CEAS 2008 Dataset
 
+Nazario Phishing Corpus
+
+📈 Future Enhancements
+URL-based phishing detection
+
+Email header and attachment analysis
+
+Integration with SOC/SIEM systems
+
+Improved model explainability
+
+🎓 Academic Context
+This project was developed as part of academic coursework in Cybersecurity, focusing on real-world threat detection using Artificial Intelligence.
+
+👨‍💻 Author
 Irshad Ansari
+Cybersecurity Undergraduate
+📍 Ahmedabad, India
+
+🔗 GitHub: https://github.com/IrshadAnsari05010
